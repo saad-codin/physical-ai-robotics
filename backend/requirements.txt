@@ -5,6 +5,7 @@ pydantic==2.5.0
 pydantic-settings==2.1.0
 sqlalchemy==2.0.23
 alembic==1.12.1
+qdrant-client==1.16.1
 psycopg[binary]==3.3.2
 asyncpg==0.29.0
 openai-chatkit==0.0.1 # Corrected version as per pip error # Added as per Chatkit documentation
