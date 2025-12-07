@@ -1,0 +1,27 @@
+{
+  "id": "vla/implementation",
+  "title": "VLA System Implementation",
+  "description": "Implementing Vision Language Action (VLA) systems requires careful integration of multiple complex components. This guide covers practical implementation strategies, code examples, and best practices for building robust VLA systems.",
+  "source": "@site/docs/vla/implementation.md",
+  "sourceDirName": "vla",
+  "slug": "/vla/implementation",
+  "permalink": "/docs/vla/implementation",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/physical-ai-robotics/textbook/tree/main/packages/create-docusaurus/templates/shared/docs/vla/implementation.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "VLA System Architectures",
+    "permalink": "/docs/vla/architectures"
+  },
+  "next": {
+    "title": "Contributing to the Textbook",
+    "permalink": "/docs/advanced/contributing"
+  }
+}

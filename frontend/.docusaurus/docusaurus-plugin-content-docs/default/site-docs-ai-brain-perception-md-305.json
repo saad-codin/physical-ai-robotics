@@ -1,0 +1,27 @@
+{
+  "id": "ai-brain/perception",
+  "title": "Perception Systems in AI-Robot Brains",
+  "description": "Perception is the ability of a robot to understand its environment through sensors and interpret the data to make decisions. It's one of the fundamental components of an AI-Robot Brain, enabling robots to see, hear, and understand their surroundings.",
+  "source": "@site/docs/ai-brain/perception.md",
+  "sourceDirName": "ai-brain",
+  "slug": "/ai-brain/perception",
+  "permalink": "/docs/ai-brain/perception",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/physical-ai-robotics/textbook/tree/main/packages/create-docusaurus/templates/shared/docs/ai-brain/perception.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Introduction to AI-Robot Brain",
+    "permalink": "/docs/ai-brain/intro"
+  },
+  "next": {
+    "title": "Planning Systems in AI-Robot Brains",
+    "permalink": "/docs/ai-brain/planning"
+  }
+}

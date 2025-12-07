@@ -1,0 +1,27 @@
+{
+  "id": "ros2/intro",
+  "title": "Introduction to ROS 2",
+  "description": "The Robot Operating System 2 (ROS 2) is a flexible framework for writing robot software. It's a collection of tools, libraries, and conventions that aim to simplify the task of creating complex and robust robot behavior across a wide variety of robot platforms.",
+  "source": "@site/docs/ros2/intro.md",
+  "sourceDirName": "ros2",
+  "slug": "/ros2/intro",
+  "permalink": "/docs/ros2/intro",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/physical-ai-robotics/textbook/tree/main/packages/create-docusaurus/templates/shared/docs/ros2/intro.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Introduction to Physical AI & Humanoid Robotics",
+    "permalink": "/docs/intro"
+  },
+  "next": {
+    "title": "ROS 2 Architecture",
+    "permalink": "/docs/ros2/architecture"
+  }
+}

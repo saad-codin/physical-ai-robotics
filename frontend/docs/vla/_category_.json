@@ -1,0 +1,8 @@
+{
+  "label": "Vision Language Action (VLA)",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "description": "Vision-language-action systems for advanced robotics"
+  }
+}

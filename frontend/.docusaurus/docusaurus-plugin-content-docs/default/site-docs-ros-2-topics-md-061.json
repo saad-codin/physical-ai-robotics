@@ -1,0 +1,27 @@
+{
+  "id": "ros2/topics",
+  "title": "ROS 2 Topics",
+  "description": "Topics are named buses over which nodes exchange messages. They provide a way for nodes to communicate with each other using a publish-subscribe pattern.",
+  "source": "@site/docs/ros2/topics.md",
+  "sourceDirName": "ros2",
+  "slug": "/ros2/topics",
+  "permalink": "/docs/ros2/topics",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/physical-ai-robotics/textbook/tree/main/packages/create-docusaurus/templates/shared/docs/ros2/topics.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "ROS 2 Nodes",
+    "permalink": "/docs/ros2/nodes"
+  },
+  "next": {
+    "title": "ROS 2 Services",
+    "permalink": "/docs/ros2/services"
+  }
+}

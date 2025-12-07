@@ -1,0 +1,12 @@
+line-length = 100
+target-version = "py311"
+select = ["E", "F", "W", "I", "UP"]
+ignore = ["E501"]
+
+[per-file-ignores]
+"__init__.py" = ["F401"]
+"migrations/*" = ["E501", "F841"]
+
+[isort]
+known-first-party = ["src"]
+profile = "black"

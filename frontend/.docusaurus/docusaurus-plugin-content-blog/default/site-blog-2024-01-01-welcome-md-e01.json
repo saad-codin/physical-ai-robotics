@@ -1,0 +1,50 @@
+{
+  "permalink": "/blog/welcome",
+  "editUrl": "https://github.com/physical-ai-robotics/textbook/tree/main/packages/create-docusaurus/templates/shared/blog/2024-01-01-welcome.md",
+  "source": "@site/blog/2024-01-01-welcome.md",
+  "title": "Welcome to the Physical AI & Robotics Textbook",
+  "description": "Welcome to the AI-Native Physical AI & Humanoid Robotics Textbook!",
+  "date": "2024-01-01T00:00:00.000Z",
+  "tags": [
+    {
+      "inline": true,
+      "label": "textbook",
+      "permalink": "/blog/tags/textbook"
+    },
+    {
+      "inline": true,
+      "label": "robotics",
+      "permalink": "/blog/tags/robotics"
+    },
+    {
+      "inline": true,
+      "label": "ai",
+      "permalink": "/blog/tags/ai"
+    }
+  ],
+  "readingTime": 0.81,
+  "hasTruncateMarker": true,
+  "authors": [
+    {
+      "name": "Robotics Development Team",
+      "title": "Contributors to the Physical AI & Humanoid Robotics Textbook",
+      "url": "https://github.com/physical-ai-robotics",
+      "imageURL": "https://github.com/physical-ai-robotics.png",
+      "key": "robotics-team",
+      "page": null
+    }
+  ],
+  "frontMatter": {
+    "slug": "welcome",
+    "title": "Welcome to the Physical AI & Robotics Textbook",
+    "authors": [
+      "robotics-team"
+    ],
+    "tags": [
+      "textbook",
+      "robotics",
+      "ai"
+    ]
+  },
+  "unlisted": false
+}

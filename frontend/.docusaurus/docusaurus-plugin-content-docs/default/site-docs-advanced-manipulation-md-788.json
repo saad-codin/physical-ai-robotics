@@ -1,0 +1,27 @@
+{
+  "id": "advanced/manipulation",
+  "title": "Robotic Manipulation",
+  "description": "Robotic manipulation involves the control of robot arms and end-effectors to interact with objects in the environment. This section covers the fundamental concepts, techniques, and algorithms for dexterous manipulation.",
+  "source": "@site/docs/advanced/manipulation.md",
+  "sourceDirName": "advanced",
+  "slug": "/advanced/manipulation",
+  "permalink": "/docs/advanced/manipulation",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/physical-ai-robotics/textbook/tree/main/packages/create-docusaurus/templates/shared/docs/advanced/manipulation.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "sidebar_position": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Humanoid Robot Control",
+    "permalink": "/docs/advanced/humanoid-control"
+  },
+  "next": {
+    "title": "Mobile Robot Navigation",
+    "permalink": "/docs/advanced/navigation"
+  }
+}

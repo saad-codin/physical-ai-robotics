@@ -1,0 +1,8 @@
+{
+  "label": "ROS 2 Fundamentals",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "Fundamental concepts of Robot Operating System 2"
+  }
+}

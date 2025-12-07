@@ -1,0 +1,23 @@
+{
+  "id": "advanced/multi-robot",
+  "title": "Multi-Robot Systems",
+  "description": "Multi-robot systems involve the coordination and control of multiple robots to achieve common goals. This section covers the fundamental concepts, coordination strategies, and implementation techniques for effective multi-robot cooperation.",
+  "source": "@site/docs/advanced/multi-robot.md",
+  "sourceDirName": "advanced",
+  "slug": "/advanced/multi-robot",
+  "permalink": "/docs/advanced/multi-robot",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/physical-ai-robotics/textbook/tree/main/packages/create-docusaurus/templates/shared/docs/advanced/multi-robot.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 6,
+  "frontMatter": {
+    "sidebar_position": 6
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Mobile Robot Navigation",
+    "permalink": "/docs/advanced/navigation"
+  }
+}

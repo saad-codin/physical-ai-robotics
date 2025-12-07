@@ -1,0 +1,27 @@
+{
+  "id": "advanced/contributing",
+  "title": "Contributing to the Textbook",
+  "description": "We welcome contributions to the Physical AI & Humanoid Robotics Textbook! This guide will help you get started with contributing content, examples, and improvements to the textbook.",
+  "source": "@site/docs/advanced/contributing.md",
+  "sourceDirName": "advanced",
+  "slug": "/advanced/contributing",
+  "permalink": "/docs/advanced/contributing",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/physical-ai-robotics/textbook/tree/main/packages/create-docusaurus/templates/shared/docs/advanced/contributing.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "VLA System Implementation",
+    "permalink": "/docs/vla/implementation"
+  },
+  "next": {
+    "title": "Frequently Asked Questions (FAQ)",
+    "permalink": "/docs/advanced/faq"
+  }
+}

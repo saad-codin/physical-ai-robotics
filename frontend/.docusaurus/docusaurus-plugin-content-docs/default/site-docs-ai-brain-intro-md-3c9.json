@@ -1,0 +1,27 @@
+{
+  "id": "ai-brain/intro",
+  "title": "Introduction to AI-Robot Brain",
+  "description": "The AI-Robot Brain represents the cognitive architecture that enables robots to perceive their environment, reason about their situation, plan actions, and execute behaviors. This module covers the essential components that make robots intelligent and autonomous.",
+  "source": "@site/docs/ai-brain/intro.md",
+  "sourceDirName": "ai-brain",
+  "slug": "/ai-brain/intro",
+  "permalink": "/docs/ai-brain/intro",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/physical-ai-robotics/textbook/tree/main/packages/create-docusaurus/templates/shared/docs/ai-brain/intro.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Digital Twin Modeling",
+    "permalink": "/docs/digital-twin/modeling"
+  },
+  "next": {
+    "title": "Perception Systems in AI-Robot Brains",
+    "permalink": "/docs/ai-brain/perception"
+  }
+}

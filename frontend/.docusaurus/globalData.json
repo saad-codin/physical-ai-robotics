@@ -1,0 +1,133 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/docs",
+          "mainDocId": "intro",
+          "docs": [
+            {
+              "id": "advanced/contributing",
+              "path": "/docs/advanced/contributing",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "advanced/faq",
+              "path": "/docs/advanced/faq",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "advanced/humanoid-control",
+              "path": "/docs/advanced/humanoid-control",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "advanced/manipulation",
+              "path": "/docs/advanced/manipulation",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "advanced/multi-robot",
+              "path": "/docs/advanced/multi-robot",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "advanced/navigation",
+              "path": "/docs/advanced/navigation",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "ai-brain/intro",
+              "path": "/docs/ai-brain/intro",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "ai-brain/perception",
+              "path": "/docs/ai-brain/perception",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "ai-brain/planning",
+              "path": "/docs/ai-brain/planning",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "digital-twin/intro",
+              "path": "/docs/digital-twin/intro",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "digital-twin/modeling",
+              "path": "/docs/digital-twin/modeling",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "digital-twin/simulation-platforms",
+              "path": "/docs/digital-twin/simulation-platforms",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "intro",
+              "path": "/docs/intro",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "ros2/architecture",
+              "path": "/docs/ros2/architecture",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "ros2/intro",
+              "path": "/docs/ros2/intro",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "ros2/nodes",
+              "path": "/docs/ros2/nodes",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "ros2/services",
+              "path": "/docs/ros2/services",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "ros2/topics",
+              "path": "/docs/ros2/topics",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "vla/architectures",
+              "path": "/docs/vla/architectures",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "vla/implementation",
+              "path": "/docs/vla/implementation",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "vla/intro",
+              "path": "/docs/vla/intro",
+              "sidebar": "tutorialSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "tutorialSidebar": {
+              "link": {
+                "path": "/docs/intro",
+                "label": "intro"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}

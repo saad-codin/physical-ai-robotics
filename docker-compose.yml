@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  # Database Service (PostgreSQL)
+  db:
+    image: postgres:15-alpine
+    container_name: robotics_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: textbook_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # Vector Database Service (Qdrant)
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: robotics_qdrant
+    restart: unless-stopped
+    ports:
+      - "6333:6333"
+    volumes:
+      - qdrant_data:/qdrant/storage
+
+  # Backend API
+  backend:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: robotics_backend
+    restart: unless-stopped
+    depends_on:
+      - db
+      - qdrant
+    environment:
+      DATABASE_URL: postgresql://user:password@db:5432/textbook_db
+      QDRANT_URL: http://qdrant:6333
+      QDRANT_API_KEY: "" 
+      QDRANT_COLLECTION_NAME: lesson_embeddings
+      LLM_PROVIDER: openai
+      # Make sure to set OPENAI_API_KEY in your .env file or export it
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-placeholder}
+      AUTH_SECRET: dev_secret_key_change_me
+      FRONTEND_URL: http://localhost:3000
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+
+
+volumes:
+  postgres_data:
+  qdrant_data:

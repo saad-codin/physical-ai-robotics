@@ -1,0 +1,36 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Run linting and formatting checks
+echo "Running pre-commit checks..."
+
+# Check frontend linting
+if [ -d "frontend" ]; then
+  echo "Checking frontend..."
+  cd frontend
+  npm run lint --silent
+  if [ $? -ne 0 ]; then
+    echo "Frontend linting failed. Please fix issues and try again."
+    exit 1
+  fi
+  cd ..
+fi
+
+# Check backend linting
+if [ -d "backend" ]; then
+  echo "Checking backend..."
+  cd backend
+  python -m black . --check
+  if [ $? -ne 0 ]; then
+    echo "Backend formatting issues found. Running black to fix..."
+    python -m black .
+  fi
+  python -m ruff check .
+  if [ $? -ne 0 ]; then
+    echo "Backend linting failed. Please fix issues and try again."
+    exit 1
+  fi
+  cd ..
+fi
+
+echo "Pre-commit checks passed!"

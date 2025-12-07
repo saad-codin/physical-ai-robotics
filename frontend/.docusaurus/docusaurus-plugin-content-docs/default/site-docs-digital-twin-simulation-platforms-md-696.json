@@ -1,0 +1,27 @@
+{
+  "id": "digital-twin/simulation-platforms",
+  "title": "Simulation Platforms for Digital Twins",
+  "description": "Simulation platforms are essential tools for creating and managing digital twins of physical robots. These platforms provide the virtual environment where digital twins can be tested, validated, and optimized before deployment to physical hardware.",
+  "source": "@site/docs/digital-twin/simulation-platforms.md",
+  "sourceDirName": "digital-twin",
+  "slug": "/digital-twin/simulation-platforms",
+  "permalink": "/docs/digital-twin/simulation-platforms",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/physical-ai-robotics/textbook/tree/main/packages/create-docusaurus/templates/shared/docs/digital-twin/simulation-platforms.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Introduction to Digital Twin & Simulation",
+    "permalink": "/docs/digital-twin/intro"
+  },
+  "next": {
+    "title": "Digital Twin Modeling",
+    "permalink": "/docs/digital-twin/modeling"
+  }
+}

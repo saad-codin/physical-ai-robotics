@@ -1,0 +1,27 @@
+{
+  "id": "ros2/architecture",
+  "title": "ROS 2 Architecture",
+  "description": "Understanding the architecture of ROS 2 is crucial for developing effective robotic applications. The architecture is built around several core concepts and technologies.",
+  "source": "@site/docs/ros2/architecture.md",
+  "sourceDirName": "ros2",
+  "slug": "/ros2/architecture",
+  "permalink": "/docs/ros2/architecture",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/physical-ai-robotics/textbook/tree/main/packages/create-docusaurus/templates/shared/docs/ros2/architecture.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Introduction to ROS 2",
+    "permalink": "/docs/ros2/intro"
+  },
+  "next": {
+    "title": "ROS 2 Nodes",
+    "permalink": "/docs/ros2/nodes"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "vla/architectures",
+  "title": "VLA System Architectures",
+  "description": "Vision Language Action (VLA) systems require sophisticated architectures that seamlessly integrate perception, language understanding, and action execution. These architectures must handle the complexity of multimodal processing while maintaining real-time performance for robotic applications.",
+  "source": "@site/docs/vla/architectures.md",
+  "sourceDirName": "vla",
+  "slug": "/vla/architectures",
+  "permalink": "/docs/vla/architectures",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/physical-ai-robotics/textbook/tree/main/packages/create-docusaurus/templates/shared/docs/vla/architectures.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Introduction to Vision Language Action (VLA)",
+    "permalink": "/docs/vla/intro"
+  },
+  "next": {
+    "title": "VLA System Implementation",
+    "permalink": "/docs/vla/implementation"
+  }
+}

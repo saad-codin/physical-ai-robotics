@@ -1,0 +1,27 @@
+{
+  "id": "ros2/nodes",
+  "title": "ROS 2 Nodes",
+  "description": "A node is a single executable that uses ROS 2 to communicate with other nodes. Nodes are the fundamental building blocks of ROS 2 applications, each performing a specific task or set of tasks.",
+  "source": "@site/docs/ros2/nodes.md",
+  "sourceDirName": "ros2",
+  "slug": "/ros2/nodes",
+  "permalink": "/docs/ros2/nodes",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/physical-ai-robotics/textbook/tree/main/packages/create-docusaurus/templates/shared/docs/ros2/nodes.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "ROS 2 Architecture",
+    "permalink": "/docs/ros2/architecture"
+  },
+  "next": {
+    "title": "ROS 2 Topics",
+    "permalink": "/docs/ros2/topics"
+  }
+}

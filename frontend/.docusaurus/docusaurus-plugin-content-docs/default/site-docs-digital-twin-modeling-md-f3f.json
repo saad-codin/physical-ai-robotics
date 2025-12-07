@@ -1,0 +1,27 @@
+{
+  "id": "digital-twin/modeling",
+  "title": "Digital Twin Modeling",
+  "description": "Digital twin modeling involves creating accurate virtual representations of physical robots and their environments. This process is crucial for developing, testing, and validating robotic systems before deploying them to physical hardware.",
+  "source": "@site/docs/digital-twin/modeling.md",
+  "sourceDirName": "digital-twin",
+  "slug": "/digital-twin/modeling",
+  "permalink": "/docs/digital-twin/modeling",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/physical-ai-robotics/textbook/tree/main/packages/create-docusaurus/templates/shared/docs/digital-twin/modeling.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Simulation Platforms for Digital Twins",
+    "permalink": "/docs/digital-twin/simulation-platforms"
+  },
+  "next": {
+    "title": "Introduction to AI-Robot Brain",
+    "permalink": "/docs/ai-brain/intro"
+  }
+}

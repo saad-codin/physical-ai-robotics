@@ -1,0 +1,27 @@
+{
+  "id": "ai-brain/planning",
+  "title": "Planning Systems in AI-Robot Brains",
+  "description": "Planning is the process of determining a sequence of actions to achieve a desired goal. In AI-Robot Brains, planning systems bridge the gap between high-level goals and low-level motor commands, creating executable plans that account for environmental constraints and robot capabilities.",
+  "source": "@site/docs/ai-brain/planning.md",
+  "sourceDirName": "ai-brain",
+  "slug": "/ai-brain/planning",
+  "permalink": "/docs/ai-brain/planning",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/physical-ai-robotics/textbook/tree/main/packages/create-docusaurus/templates/shared/docs/ai-brain/planning.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Perception Systems in AI-Robot Brains",
+    "permalink": "/docs/ai-brain/perception"
+  },
+  "next": {
+    "title": "Introduction to Vision Language Action (VLA)",
+    "permalink": "/docs/vla/intro"
+  }
+}

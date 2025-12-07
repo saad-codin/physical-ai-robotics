@@ -1,0 +1,27 @@
+{
+  "id": "advanced/faq",
+  "title": "Frequently Asked Questions (FAQ)",
+  "description": "This section addresses common questions about the Physical AI & Humanoid Robotics Textbook and the concepts covered in the course.",
+  "source": "@site/docs/advanced/faq.md",
+  "sourceDirName": "advanced",
+  "slug": "/advanced/faq",
+  "permalink": "/docs/advanced/faq",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/physical-ai-robotics/textbook/tree/main/packages/create-docusaurus/templates/shared/docs/advanced/faq.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 2,
+  "frontMatter": {
+    "sidebar_position": 2
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Contributing to the Textbook",
+    "permalink": "/docs/advanced/contributing"
+  },
+  "next": {
+    "title": "Humanoid Robot Control",
+    "permalink": "/docs/advanced/humanoid-control"
+  }
+}

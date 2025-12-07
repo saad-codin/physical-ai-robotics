@@ -1,0 +1,27 @@
+{
+  "id": "advanced/humanoid-control",
+  "title": "Humanoid Robot Control",
+  "description": "Humanoid robot control presents unique challenges due to the complex dynamics, balance requirements, and multi-degree-of-freedom systems. This section covers the fundamental concepts and techniques for controlling humanoid robots.",
+  "source": "@site/docs/advanced/humanoid-control.md",
+  "sourceDirName": "advanced",
+  "slug": "/advanced/humanoid-control",
+  "permalink": "/docs/advanced/humanoid-control",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/physical-ai-robotics/textbook/tree/main/packages/create-docusaurus/templates/shared/docs/advanced/humanoid-control.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 3,
+  "frontMatter": {
+    "sidebar_position": 3
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Frequently Asked Questions (FAQ)",
+    "permalink": "/docs/advanced/faq"
+  },
+  "next": {
+    "title": "Robotic Manipulation",
+    "permalink": "/docs/advanced/manipulation"
+  }
+}

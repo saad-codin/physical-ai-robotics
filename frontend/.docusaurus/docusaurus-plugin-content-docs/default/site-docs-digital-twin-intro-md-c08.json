@@ -1,0 +1,27 @@
+{
+  "id": "digital-twin/intro",
+  "title": "Introduction to Digital Twin & Simulation",
+  "description": "A Digital Twin in robotics is a virtual representation of a physical robot that simulates its behavior, characteristics, and environment in real-time. This virtual model enables engineers to test, validate, and optimize robot designs and behaviors before deploying them to physical hardware.",
+  "source": "@site/docs/digital-twin/intro.md",
+  "sourceDirName": "digital-twin",
+  "slug": "/digital-twin/intro",
+  "permalink": "/docs/digital-twin/intro",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/physical-ai-robotics/textbook/tree/main/packages/create-docusaurus/templates/shared/docs/digital-twin/intro.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "ROS 2 Services",
+    "permalink": "/docs/ros2/services"
+  },
+  "next": {
+    "title": "Simulation Platforms for Digital Twins",
+    "permalink": "/docs/digital-twin/simulation-platforms"
+  }
+}

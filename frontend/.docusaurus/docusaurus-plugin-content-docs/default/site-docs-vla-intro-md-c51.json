@@ -1,0 +1,27 @@
+{
+  "id": "vla/intro",
+  "title": "Introduction to Vision Language Action (VLA)",
+  "description": "Vision Language Action (VLA) systems represent the next frontier in robotics, where robots can understand natural language instructions, perceive their environment visually, and execute complex actions. This paradigm enables more intuitive human-robot interaction and more flexible robotic capabilities.",
+  "source": "@site/docs/vla/intro.md",
+  "sourceDirName": "vla",
+  "slug": "/vla/intro",
+  "permalink": "/docs/vla/intro",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/physical-ai-robotics/textbook/tree/main/packages/create-docusaurus/templates/shared/docs/vla/intro.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Planning Systems in AI-Robot Brains",
+    "permalink": "/docs/ai-brain/planning"
+  },
+  "next": {
+    "title": "VLA System Architectures",
+    "permalink": "/docs/vla/architectures"
+  }
+}

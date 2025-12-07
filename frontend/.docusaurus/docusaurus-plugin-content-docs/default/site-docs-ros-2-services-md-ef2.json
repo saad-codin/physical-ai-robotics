@@ -1,0 +1,27 @@
+{
+  "id": "ros2/services",
+  "title": "ROS 2 Services",
+  "description": "Services provide a request-response communication pattern in ROS 2. Unlike topics which are asynchronous, services provide synchronous communication where a client sends a request and waits for a response from a server.",
+  "source": "@site/docs/ros2/services.md",
+  "sourceDirName": "ros2",
+  "slug": "/ros2/services",
+  "permalink": "/docs/ros2/services",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/physical-ai-robotics/textbook/tree/main/packages/create-docusaurus/templates/shared/docs/ros2/services.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 4,
+  "frontMatter": {
+    "sidebar_position": 4
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "ROS 2 Topics",
+    "permalink": "/docs/ros2/topics"
+  },
+  "next": {
+    "title": "Introduction to Digital Twin & Simulation",
+    "permalink": "/docs/digital-twin/intro"
+  }
+}

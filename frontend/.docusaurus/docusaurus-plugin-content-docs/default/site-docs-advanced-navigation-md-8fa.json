@@ -1,0 +1,27 @@
+{
+  "id": "advanced/navigation",
+  "title": "Mobile Robot Navigation",
+  "description": "Mobile robot navigation is the process of moving a robot from one location to another while avoiding obstacles and following optimal paths. This section covers the fundamental concepts, algorithms, and techniques for autonomous robot navigation.",
+  "source": "@site/docs/advanced/navigation.md",
+  "sourceDirName": "advanced",
+  "slug": "/advanced/navigation",
+  "permalink": "/docs/advanced/navigation",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/physical-ai-robotics/textbook/tree/main/packages/create-docusaurus/templates/shared/docs/advanced/navigation.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "sidebar_position": 5
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Robotic Manipulation",
+    "permalink": "/docs/advanced/manipulation"
+  },
+  "next": {
+    "title": "Multi-Robot Systems",
+    "permalink": "/docs/advanced/multi-robot"
+  }
+}
