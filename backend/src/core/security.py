@@ -1,13 +1,10 @@
 """Security utilities for password hashing and token verification."""
 from datetime import datetime
 from typing import Optional
-from passlib.context import CryptContext
+import bcrypt
 import jwt
 
 from src.config import settings
-
-# Password hashing context
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
@@ -19,15 +16,11 @@ def verify_password(plain_password: str, hashed_password: str) -> bool:
 
     Returns:
         bool: True if password matches, False otherwise
-
-    Note:
-        Bcrypt has a 72-byte limit, so we truncate passwords if needed.
     """
-    # Bcrypt has a 72-byte limit, truncate if necessary
+    # Bcrypt handles bytes, and has a 72-byte limit
     password_bytes = plain_password.encode('utf-8')[:72]
-    # Decode with errors='ignore' to handle truncated UTF-8 sequences
-    truncated_password = password_bytes.decode('utf-8', errors='ignore')
-    return pwd_context.verify(truncated_password, hashed_password)
+    hashed_bytes = hashed_password.encode('utf-8')
+    return bcrypt.checkpw(password_bytes, hashed_bytes)
 
 
 def get_password_hash(password: str) -> str:
@@ -38,15 +31,12 @@ def get_password_hash(password: str) -> str:
 
     Returns:
         str: The hashed password
-
-    Note:
-        Bcrypt has a 72-byte limit, so we truncate passwords if needed.
     """
     # Bcrypt has a 72-byte limit, truncate if necessary
     password_bytes = password.encode('utf-8')[:72]
-    # Decode with errors='ignore' to handle truncated UTF-8 sequences
-    truncated_password = password_bytes.decode('utf-8', errors='ignore')
-    return pwd_context.hash(truncated_password)
+    salt = bcrypt.gensalt()
+    hashed = bcrypt.hashpw(password_bytes, salt)
+    return hashed.decode('utf-8')
 
 
 def verify_token(token: str) -> Optional[str]:

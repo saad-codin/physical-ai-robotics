@@ -17,6 +17,7 @@ email-validator==2.1.0
 python-jose[cryptography]==3.3.0
 PyJWT==2.8.0
 passlib[bcrypt]==1.7.4
+bcrypt==4.1.2
 
 # Development Dependencies
 black==23.11.0
