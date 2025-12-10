@@ -25,7 +25,9 @@ def verify_password(plain_password: str, hashed_password: str) -> bool:
     """
     # Bcrypt has a 72-byte limit, truncate if necessary
     password_bytes = plain_password.encode('utf-8')[:72]
-    return pwd_context.verify(password_bytes.decode('utf-8'), hashed_password)
+    # Decode with errors='ignore' to handle truncated UTF-8 sequences
+    truncated_password = password_bytes.decode('utf-8', errors='ignore')
+    return pwd_context.verify(truncated_password, hashed_password)
 
 
 def get_password_hash(password: str) -> str:
@@ -42,7 +44,9 @@ def get_password_hash(password: str) -> str:
     """
     # Bcrypt has a 72-byte limit, truncate if necessary
     password_bytes = password.encode('utf-8')[:72]
-    return pwd_context.hash(password_bytes.decode('utf-8'))
+    # Decode with errors='ignore' to handle truncated UTF-8 sequences
+    truncated_password = password_bytes.decode('utf-8', errors='ignore')
+    return pwd_context.hash(truncated_password)
 
 
 def verify_token(token: str) -> Optional[str]:
