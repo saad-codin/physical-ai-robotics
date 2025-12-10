@@ -49,7 +49,12 @@ class Settings(BaseSettings):
     def set_allowed_origins(cls, values: dict[str, Any]) -> dict[str, Any]:
         if not values.get('allowed_origins'):
             frontend_url = values.get('frontend_url', 'http://localhost:3000')
-            values['allowed_origins'] = [frontend_url]
+            # Always include both production and localhost
+            values['allowed_origins'] = [
+                frontend_url,
+                'http://localhost:3000',
+                'https://physical-ai-robotics-six.vercel.app'
+            ]
         return values
 
     # Application Configuration
