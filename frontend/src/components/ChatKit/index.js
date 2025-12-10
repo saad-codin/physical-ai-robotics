@@ -27,7 +27,7 @@ function ChatKitComponent() {
 
     try {
       const token = localStorage.getItem('access_token');
-      const response = await fetch('http://localhost:8000/v1/chatkit/chat', {
+      const response = await fetch('https://dead-stacee-galx-311dba08.koyeb.app/v1/chatkit/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

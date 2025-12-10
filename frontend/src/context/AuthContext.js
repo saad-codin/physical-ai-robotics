@@ -29,7 +29,7 @@ export const AuthProvider = ({ children }) => {
 
   const fetchUserInfo = async (token) => {
     try {
-      const response = await fetch('http://localhost:8000/v1/users/me', {
+      const response = await fetch('https://dead-stacee-galx-311dba08.koyeb.app/v1/users/me', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -54,7 +54,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await fetch('http://localhost:8000/v1/users/login', {
+      const response = await fetch('https://dead-stacee-galx-311dba08.koyeb.app/v1/users/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -83,7 +83,7 @@ export const AuthProvider = ({ children }) => {
 
   const signup = async (userData) => {
     try {
-      const response = await fetch('http://localhost:8000/v1/users/signup', {
+      const response = await fetch('https://dead-stacee-galx-311dba08.koyeb.app/v1/users/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
