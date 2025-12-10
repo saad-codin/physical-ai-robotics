@@ -8,7 +8,7 @@ alembic==1.12.1
 qdrant-client==1.16.1
 psycopg[binary]==3.3.2
 asyncpg==0.29.0
-openai-chatkit==0.0.1 # Corrected version as per pip error # Added as per Chatkit documentation
+# openai-chatkit==0.0.1 # Commented out - package not available on PyPI
 openai==1.3.8
 python-dotenv==1.0.0
 python-multipart==0.0.6
