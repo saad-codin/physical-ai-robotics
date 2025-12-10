@@ -1,0 +1,39 @@
+.progressContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: rgba(26, 32, 44, 0.8);
+  z-index: 9999;
+  backdrop-filter: blur(10px);
+}
+
+.progressBar {
+  height: 100%;
+  background: linear-gradient(90deg, #4299e1, #667eea, #f687b3);
+  transition: width 0.1s ease-out;
+  position: relative;
+  box-shadow: 0 0 20px rgba(66, 153, 225, 0.6);
+}
+
+.progressGlow {
+  position: absolute;
+  right: 0;
+  top: -10px;
+  width: 30px;
+  height: 24px;
+  background: radial-gradient(circle, rgba(66, 153, 225, 0.8) 0%, transparent 70%);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}

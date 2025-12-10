@@ -15,13 +15,7 @@ export default {
   "i18n": {
     "defaultLocale": "en",
     "locales": [
-      "en",
-      "zh",
-      "es",
-      "fr",
-      "de",
-      "ja",
-      "ko"
+      "en"
     ],
     "path": "i18n",
     "localeConfigs": {}
@@ -31,13 +25,9 @@ export default {
       "classic",
       {
         "docs": {
-          "sidebarPath": "./sidebars.js",
-          "editUrl": "https://github.com/physical-ai-robotics/textbook/tree/main/packages/create-docusaurus/templates/shared/"
+          "sidebarPath": "./sidebars.js"
         },
-        "blog": {
-          "showReadingTime": true,
-          "editUrl": "https://github.com/physical-ai-robotics/textbook/tree/main/packages/create-docusaurus/templates/shared/"
-        },
+        "blog": false,
         "theme": {
           "customCss": "./src/css/custom.css"
         }
@@ -52,31 +42,24 @@ export default {
         "alt": "Robotics Textbook Logo",
         "src": "img/logo.svg"
       },
+      "hideOnScroll": true,
       "items": [
         {
           "type": "docSidebar",
           "sidebarId": "tutorialSidebar",
           "position": "left",
-          "label": "Textbook"
+          "label": "📖 Textbook"
         },
         {
-          "to": "/blog",
-          "label": "Blog",
-          "position": "left"
+          "type": "search",
+          "position": "right"
         },
         {
           "href": "https://github.com/physical-ai-robotics/textbook",
           "label": "GitHub",
           "position": "right"
-        },
-        {
-          "type": "localeDropdown",
-          "position": "right",
-          "dropdownItemsBefore": [],
-          "dropdownItemsAfter": []
         }
-      ],
-      "hideOnScroll": false
+      ]
     },
     "footer": {
       "style": "dark",
@@ -110,10 +93,6 @@ export default {
         {
           "title": "More",
           "items": [
-            {
-              "label": "Blog",
-              "to": "/blog"
-            },
             {
               "label": "GitHub",
               "href": "https://github.com/physical-ai-robotics/textbook"
@@ -350,6 +329,9 @@ export default {
       "maxHeadingLevel": 3
     }
   },
+  "stylesheets": [
+    "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@700;800&family=Fira+Code:wght@400;600&display=swap"
+  ],
   "baseUrlIssueBanner": true,
   "future": {
     "v4": {
@@ -382,7 +364,6 @@ export default {
   "themes": [],
   "scripts": [],
   "headTags": [],
-  "stylesheets": [],
   "clientModules": [],
   "titleDelimiter": "|",
   "noIndex": false,

@@ -1,31 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import BrowserOnly from '@docusaurus/BrowserOnly';
+import './styles.css';
 
 function ChatKitComponent() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const messagesEndRef = useRef(null);
 
-  const sampleMessages = [
-    { id: 1, type: 'assistant', content: 'Hello! I\'m your AI Robotics Tutor. Ask me anything about robotics concepts!' },
-  ];
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages, isLoading]);
 
   const sendMessage = async () => {
     if (!inputValue.trim() || isLoading) return;
 
-    // Add user message
     const userMessage = { id: Date.now(), type: 'user', content: inputValue };
     setMessages(prev => [...prev, userMessage]);
     setInputValue('');
     setIsLoading(true);
 
     try {
-      // Get auth token if user is logged in
       const token = localStorage.getItem('access_token');
-
-      // Call the backend ChatKit endpoint
-      const response = await fetch('http://localhost:8000/v1/chatkit/chatkit', {
+      const response = await fetch('http://localhost:8000/v1/chatkit/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -63,147 +65,107 @@ function ChatKitComponent() {
     sendMessage();
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  };
+
   return (
     <BrowserOnly>
       {() => (
-        <div className="chatkit-container" style={{
-          position: 'fixed',
-          bottom: '20px',
-          right: '20px',
-          zIndex: 1000
-        }}>
+        <div className="chatkit-container">
           {!isOpen ? (
             <button
+              className="chat-button"
               onClick={() => setIsOpen(true)}
-              style={{
-                backgroundColor: '#4299e1',
-                color: 'white',
-                border: 'none',
-                borderRadius: '50%',
-                width: '60px',
-                height: '60px',
-                fontSize: '24px',
-                cursor: 'pointer',
-                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
-              }}
+              aria-label="Open chat"
             >
               🤖
             </button>
           ) : (
-            <div style={{
-              width: '400px',
-              height: '500px',
-              border: '1px solid #e2e8f0',
-              borderRadius: '8px',
-              backgroundColor: 'white',
-              display: 'flex',
-              flexDirection: 'column',
-              boxShadow: '0 10px 15px rgba(0, 0, 0, 0.1)',
-              overflow: 'hidden'
-            }}>
-              <div style={{
-                padding: '1rem',
-                backgroundColor: '#4299e1',
-                color: 'white',
-                borderTopLeftRadius: '8px',
-                borderTopRightRadius: '8px',
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center'
-              }}>
-                <span>AI Robotics Tutor</span>
+            <div className="chat-window">
+              <div className="chat-header">
+                <div className="chat-header-content">
+                  <div className="chat-avatar">
+                    🤖
+                  </div>
+                  <div className="chat-title">
+                    <div className="chat-title-main">AI Robotics Tutor</div>
+                    <div className="chat-title-status">
+                      <span className="status-indicator"></span>
+                      Online
+                    </div>
+                  </div>
+                </div>
                 <button
+                  className="close-button"
                   onClick={() => setIsOpen(false)}
-                  style={{
-                    background: 'none',
-                    border: 'none',
-                    color: 'white',
-                    fontSize: '1.2rem',
-                    cursor: 'pointer'
-                  }}
+                  aria-label="Close chat"
                 >
                   ×
                 </button>
               </div>
 
-              <div style={{
-                flex: 1,
-                padding: '1rem',
-                overflowY: 'auto',
-                backgroundColor: '#f8fafc',
-                display: 'flex',
-                flexDirection: 'column'
-              }}>
-                {(messages.length === 0 ? sampleMessages : messages).map((message) => (
-                  <div
-                    key={message.id}
-                    style={{
-                      marginBottom: '1rem',
-                      textAlign: message.type === 'user' ? 'right' : 'left'
-                    }}
-                  >
-                    <div
-                      style={{
-                        display: 'inline-block',
-                        padding: '0.5rem 1rem',
-                        borderRadius: '8px',
-                        backgroundColor: message.type === 'user' ? '#4299e1' : '#ffffff',
-                        color: message.type === 'user' ? 'white' : '#333',
-                        border: message.type === 'assistant' ? '1px solid #e2e8f0' : 'none',
-                        maxWidth: '80%'
-                      }}
-                    >
+              <div className="chat-messages">
+                {messages.length === 0 && (
+                  <div className="message assistant">
+                    <div className="message-avatar">🤖</div>
+                    <div className="message-content">
+                      Hello! I'm your AI Robotics Tutor. Ask me anything about robotics concepts, ROS 2, AI, or VLA!
+                    </div>
+                  </div>
+                )}
+
+                {messages.map((message) => (
+                  <div key={message.id} className={`message ${message.type}`}>
+                    <div className="message-avatar">
+                      {message.type === 'assistant' ? '🤖' : '👤'}
+                    </div>
+                    <div className="message-content">
                       {message.content}
                     </div>
                   </div>
                 ))}
+
                 {isLoading && (
-                  <div style={{ textAlign: 'left', marginBottom: '1rem' }}>
-                    <div style={{
-                      display: 'inline-block',
-                      padding: '0.5rem 1rem',
-                      borderRadius: '8px',
-                      backgroundColor: '#ffffff',
-                      color: '#333',
-                      border: '1px solid #e2e8f0'
-                    }}>
-                      Thinking...
+                  <div className="message assistant">
+                    <div className="message-avatar">🤖</div>
+                    <div className="loading-indicator">
+                      <div className="loading-dots">
+                        <div className="loading-dot"></div>
+                        <div className="loading-dot"></div>
+                        <div className="loading-dot"></div>
+                      </div>
                     </div>
                   </div>
                 )}
+
+                <div ref={messagesEndRef} />
               </div>
 
-              <form onSubmit={handleSubmit} style={{ padding: '1rem', borderTop: '1px solid #e2e8f0' }}>
-                <div style={{ display: 'flex' }}>
-                  <input
-                    type="text"
+              <div className="chat-input-container">
+                <form onSubmit={handleSubmit} className="chat-input-wrapper">
+                  <textarea
+                    className="chat-input"
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
+                    onKeyPress={handleKeyPress}
                     placeholder="Ask about robotics concepts..."
-                    style={{
-                      flex: 1,
-                      padding: '0.5rem',
-                      border: '1px solid #e2e8f0',
-                      borderRadius: '4px 0 0 4px'
-                    }}
                     disabled={isLoading}
+                    rows={1}
                   />
                   <button
                     type="submit"
-                    style={{
-                      padding: '0.5rem 1rem',
-                      backgroundColor: '#4299e1',
-                      color: 'white',
-                      border: 'none',
-                      borderRadius: '0 4px 4px 0',
-                      cursor: isLoading ? 'not-allowed' : 'pointer'
-                    }}
-                    disabled={isLoading}
+                    className="send-button"
+                    disabled={isLoading || !inputValue.trim()}
+                    aria-label="Send message"
                   >
-                    Send
+                    ➤
                   </button>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
           )}
         </div>

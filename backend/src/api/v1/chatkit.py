@@ -13,7 +13,7 @@ from src.core.auth import get_current_active_user, get_optional_current_active_u
 from src.models.user import User as DBUser
 from src.services.qdrant_client import get_qdrant_service
 from src.services.chatbot import chatbot_service
-from src.core.config import settings
+from src.config import settings
 import openai
 
 logger = logging.getLogger(__name__)

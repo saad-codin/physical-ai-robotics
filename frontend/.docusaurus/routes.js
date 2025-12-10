@@ -38,46 +38,6 @@ export default [
     exact: true
   },
   {
-    path: '/blog',
-    component: ComponentCreator('/blog', 'f6e'),
-    exact: true
-  },
-  {
-    path: '/blog/archive',
-    component: ComponentCreator('/blog/archive', '182'),
-    exact: true
-  },
-  {
-    path: '/blog/authors',
-    component: ComponentCreator('/blog/authors', '0b7'),
-    exact: true
-  },
-  {
-    path: '/blog/tags',
-    component: ComponentCreator('/blog/tags', '287'),
-    exact: true
-  },
-  {
-    path: '/blog/tags/ai',
-    component: ComponentCreator('/blog/tags/ai', 'd6b'),
-    exact: true
-  },
-  {
-    path: '/blog/tags/robotics',
-    component: ComponentCreator('/blog/tags/robotics', '2cb'),
-    exact: true
-  },
-  {
-    path: '/blog/tags/textbook',
-    component: ComponentCreator('/blog/tags/textbook', 'e61'),
-    exact: true
-  },
-  {
-    path: '/blog/welcome',
-    component: ComponentCreator('/blog/welcome', 'cba'),
-    exact: true
-  },
-  {
     path: '/login',
     component: ComponentCreator('/login', 'a8c'),
     exact: true

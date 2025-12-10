@@ -1,49 +1,62 @@
 import React, { useState, useEffect, useRef } from 'react';
 import BrowserOnly from '@docusaurus/BrowserOnly';
+import './styles.css';
 
 function TextSelectionWidgetComponent() {
   const [selectedText, setSelectedText] = useState('');
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [additionalContext, setAdditionalContext] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [response, setResponse] = useState('');
-  const [showResponse, setShowResponse] = useState(false);
   const widgetRef = useRef(null);
+  const modalRef = useRef(null);
 
   // Function to handle text selection
   const handleSelection = () => {
     const selection = window.getSelection();
     const text = selection.toString().trim();
 
-    if (text.length > 0 && text.length < 500) { // Limit selection length
+    if (text.length > 0 && text.length < 1000) { // Limit selection length
       const range = selection.getRangeAt(0);
       const rect = range.getBoundingClientRect();
 
       setPosition({
-        x: rect.left + window.scrollX,
-        y: rect.top + window.scrollY - 40 // Position above the selection
+        x: rect.left + window.scrollX + (rect.width / 2),
+        y: rect.top + window.scrollY - 50 // Position above the selection
       });
 
       setSelectedText(text);
       setIsVisible(true);
       setResponse('');
-      setShowResponse(false);
-    } else {
+      setAdditionalContext('');
+    } else if (text.length === 0) {
       setIsVisible(false);
-      setResponse('');
-      setShowResponse(false);
     }
   };
 
-  // Function to handle asking AI
+  // Open the modal for adding context
+  const handleOpenModal = () => {
+    setShowModal(true);
+    setIsVisible(false);
+  };
+
+  // Function to handle asking AI with context
   const handleAskAI = async () => {
     if (!selectedText) return;
 
     setIsLoading(true);
     setResponse('');
-    setShowResponse(true);
 
     try {
+      // Build the query with selected text and additional context
+      let query = `Explain this concept from the textbook: "${selectedText}"`;
+      if (additionalContext.trim()) {
+        query += `\n\nAdditional context/question: ${additionalContext}`;
+      }
+      query += '\n\nPlease provide a clear, concise explanation in the context of robotics and AI.';
+
       const token = localStorage.getItem('access_token');
       const response = await fetch('http://localhost:8000/v1/chatkit/chat', {
         method: 'POST',
@@ -52,8 +65,8 @@ function TextSelectionWidgetComponent() {
           ...(token && { 'Authorization': `Bearer ${token}` })
         },
         body: JSON.stringify({
-          message: `Explain this concept: "${selectedText}" in the context of robotics and AI.`,
-          query: `Explain this concept: "${selectedText}" in the context of robotics and AI.`
+          message: query,
+          query: query
         })
       });
 
@@ -65,10 +78,17 @@ function TextSelectionWidgetComponent() {
       setResponse(data.event?.text || 'Received response from AI tutor.');
     } catch (error) {
       console.error('Error calling AI tutor:', error);
-      setResponse('Sorry, I encountered an error. Please try again.');
+      setResponse('Sorry, I encountered an error. Please try again. Make sure the backend server is running.');
     } finally {
       setIsLoading(false);
     }
+  };
+
+  // Close modal
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setAdditionalContext('');
+    setResponse('');
   };
 
   // Close widget when clicking outside
@@ -76,8 +96,9 @@ function TextSelectionWidgetComponent() {
     const handleClickOutside = (event) => {
       if (widgetRef.current && !widgetRef.current.contains(event.target)) {
         setIsVisible(false);
-        setResponse('');
-        setShowResponse(false);
+      }
+      if (showModal && modalRef.current && !modalRef.current.contains(event.target)) {
+        handleCloseModal();
       }
     };
 
@@ -85,7 +106,7 @@ function TextSelectionWidgetComponent() {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, []);
+  }, [showModal]);
 
   // Listen for text selection
   useEffect(() => {
@@ -95,84 +116,130 @@ function TextSelectionWidgetComponent() {
     };
   }, []);
 
-  if (!isVisible) {
-    return null;
-  }
+  // Handle Escape key
+  useEffect(() => {
+    const handleEscape = (event) => {
+      if (event.key === 'Escape') {
+        setIsVisible(false);
+        handleCloseModal();
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+    };
+  }, []);
 
   return (
-    <div
-      ref={widgetRef}
-      style={{
-        position: 'absolute',
-        left: `${position.x}px`,
-        top: `${position.y}px`,
-        zIndex: 10000,
-        backgroundColor: '#4299e1',
-        color: 'white',
-        padding: '8px 12px',
-        borderRadius: '6px',
-        fontSize: '14px',
-        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
-        transform: 'translateY(-100%)',
-        minWidth: '120px',
-        maxWidth: '300px',
-      }}
-    >
-      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-        <button
-          onClick={handleAskAI}
-          disabled={isLoading}
-          style={{
-            background: 'none',
-            border: 'none',
-            color: 'white',
-            fontSize: '12px',
-            cursor: isLoading ? 'not-allowed' : 'pointer',
-            padding: '4px 8px',
-            borderRadius: '4px',
-            backgroundColor: 'rgba(255, 255, 255, 0.2)',
-          }}
-        >
-          {isLoading ? 'Asking...' : '🤖 Ask AI'}
-        </button>
-        <button
-          onClick={() => {
-            setIsVisible(false);
-            setResponse('');
-            setShowResponse(false);
-          }}
-          style={{
-            background: 'none',
-            border: 'none',
-            color: 'white',
-            fontSize: '16px',
-            cursor: 'pointer',
-            padding: '0',
-            width: '20px',
-            height: '20px',
-          }}
-        >
-          ×
-        </button>
-      </div>
-
-      {showResponse && response && (
+    <>
+      {/* Text Selection Widget */}
+      {isVisible && (
         <div
+          ref={widgetRef}
+          className="text-selection-widget"
           style={{
-            marginTop: '8px',
-            paddingTop: '8px',
-            borderTop: '1px solid rgba(255, 255, 255, 0.3)',
-            fontSize: '12px',
-            lineHeight: '1.4',
-            backgroundColor: 'rgba(255, 255, 255, 0.1)',
-            borderRadius: '4px',
-            padding: '6px',
+            left: `${position.x}px`,
+            top: `${position.y}px`,
           }}
         >
-          {response}
+          <button
+            onClick={handleOpenModal}
+            className="ask-ai-button"
+          >
+            <span className="button-icon">🤖</span>
+            <span className="button-text">Ask AI</span>
+          </button>
         </div>
       )}
-    </div>
+
+      {/* AI Chat Modal */}
+      {showModal && (
+        <div className="modal-overlay">
+          <div ref={modalRef} className="modal-container">
+            {/* Modal Header */}
+            <div className="modal-header">
+              <h3 className="modal-title">
+                <span className="modal-icon">🤖</span>
+                Ask AI About This
+              </h3>
+              <button
+                onClick={handleCloseModal}
+                className="close-button"
+                aria-label="Close"
+              >
+                ×
+              </button>
+            </div>
+
+            {/* Selected Text Display */}
+            <div className="selected-text-display">
+              <div className="selected-text-label">Selected Text:</div>
+              <div className="selected-text-content">
+                "{selectedText}"
+              </div>
+            </div>
+
+            {/* Additional Context Input */}
+            <div className="context-input-section">
+              <label htmlFor="context-input" className="context-label">
+                Add more context or ask a specific question (optional):
+              </label>
+              <textarea
+                id="context-input"
+                className="context-textarea"
+                placeholder="e.g., How does this relate to ROS 2? Can you give me an example? What are the practical applications?"
+                value={additionalContext}
+                onChange={(e) => setAdditionalContext(e.target.value)}
+                rows={4}
+                disabled={isLoading}
+              />
+            </div>
+
+            {/* Action Buttons */}
+            <div className="modal-actions">
+              <button
+                onClick={handleAskAI}
+                disabled={isLoading}
+                className="submit-button"
+              >
+                {isLoading ? (
+                  <>
+                    <span className="spinner"></span>
+                    <span>Asking AI...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>✨</span>
+                    <span>Ask AI</span>
+                  </>
+                )}
+              </button>
+              <button
+                onClick={handleCloseModal}
+                className="cancel-button"
+                disabled={isLoading}
+              >
+                Cancel
+              </button>
+            </div>
+
+            {/* Response Display */}
+            {response && (
+              <div className="response-section">
+                <div className="response-header">
+                  <span className="response-icon">💡</span>
+                  <span className="response-title">AI Response:</span>
+                </div>
+                <div className="response-content">
+                  {response}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 

@@ -6,7 +6,7 @@ import styles from './styles.module.css';
 const FeatureList = [
   {
     title: 'Four-Module Curriculum',
-    Svg: null, // Will be replaced with inline SVG
+    icon: '📚',
     description: (
       <>
         Comprehensive learning path covering ROS 2, Digital Twins, AI-Robot Brains,
@@ -16,7 +16,7 @@ const FeatureList = [
   },
   {
     title: 'AI-Powered Learning',
-    Svg: null, // Will be replaced with inline SVG
+    icon: '🤖',
     description: (
       <>
         Integrated RAG chatbot provides instant answers to questions about textbook content
@@ -26,7 +26,7 @@ const FeatureList = [
   },
   {
     title: 'Personalized Experience',
-    Svg: null, // Will be replaced with inline SVG
+    icon: '✨',
     description: (
       <>
         Content adapts to your experience level, specialization, and learning preferences
@@ -36,49 +36,17 @@ const FeatureList = [
   },
 ];
 
-function Feature({Svg, title, description}) {
-  // Simple inline SVG icons as fallback
-  const getInlineSvg = (featureIndex) => {
-    const svgProps = {
-      width: 100,
-      height: 100,
-      viewBox: "0 0 24 24",
-      fill: "#4299e1"
-    };
-
-    const icons = [
-      // Mountain icon for Curriculum
-      <svg key="mountain" {...svgProps}>
-        <path d="M1 21h22L12 2 1 21zm2-2l9-16 9 16H3z" />
-      </svg>,
-
-      // Tree icon for AI Learning
-      <svg key="tree" {...svgProps}>
-        <path d="M16 10l4-6m-4 6l-4-6m4 6v6m4-3a4 4 0 11-8 0" />
-        <path d="M3 21h18" stroke="#4299e1" strokeWidth="2" />
-      </svg>,
-
-      // React-like icon for Personalized Experience
-      <svg key="react" {...svgProps}>
-        <circle cx="12" cy="12" r="2" />
-        <path d="M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10z" />
-      </svg>
-    ];
-
-    return icons[featureIndex] || icons[0];
-  };
-
-  // Find the index of this feature in the list
-  const featureIndex = FeatureList.findIndex(feature => feature.title === title);
-
+function Feature({icon, title, description}) {
   return (
     <div className={clsx('col col--4')}>
-      <div className="text--center">
-        {Svg ? <Svg className={styles.featureSvg} role="img" /> : getInlineSvg(featureIndex)}
-      </div>
-      <div className="text--center padding-horiz--md">
-        <Heading as="h3">{title}</Heading>
-        <p>{description}</p>
+      <div className="feature-card">
+        <div className="feature-icon text--center">
+          <span style={{ fontSize: '3rem' }}>{icon}</span>
+        </div>
+        <div className="text--center">
+          <Heading as="h3" className="feature-title">{title}</Heading>
+          <p className="feature-description">{description}</p>
+        </div>
       </div>
     </div>
   );
@@ -86,8 +54,14 @@ function Feature({Svg, title, description}) {
 
 export default function HomepageFeatures() {
   return (
-    <section className={styles.features}>
+    <section className="features-section">
       <div className="container">
+        <div className="section-header">
+          <h2 className="section-title">Why Choose Our Textbook?</h2>
+          <p className="section-subtitle">
+            Experience the next generation of robotics education with AI-enhanced learning
+          </p>
+        </div>
         <div className="row">
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />

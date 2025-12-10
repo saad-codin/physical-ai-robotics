@@ -16,8 +16,8 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'physical-ai-robotics', // Usually your GitHub org/user name.
-  projectName: 'textbook', // Usually your repo name.
+  organizationName: 'saad-codin', // Usually your GitHub org/user name.
+  projectName: 'physical-ai-robotics', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -27,7 +27,7 @@ const config = {
   // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
-    locales: ['en', 'zh', 'es', 'fr', 'de', 'ja', 'ko'],
+    locales: ['en'],
   },
 
   presets: [
@@ -37,18 +37,8 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/physical-ai-robotics/textbook/tree/main/packages/create-docusaurus/templates/shared/',
         },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/physical-ai-robotics/textbook/tree/main/packages/create-docusaurus/templates/shared/',
-        },
+        blog: false,
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -62,26 +52,26 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'Robotics Textbook',
+        title: 'RoboLearn',
         logo: {
-          alt: 'Robotics Textbook Logo',
+          alt: 'RoboLearn Logo',
           src: 'img/logo.svg',
         },
+        hideOnScroll: true,
         items: [
           {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Textbook',
+            label: '📖 Textbook',
           },
-          { to: '/blog', label: 'Blog', position: 'left' },
           {
-            href: 'https://github.com/physical-ai-robotics/textbook',
-            label: 'GitHub',
+            type: 'search',
             position: 'right',
           },
           {
-            type: 'localeDropdown',
+            href: 'https://github.com/saad-codin/physical-ai-robotics',
+            label: 'GitHub',
             position: 'right',
           },
         ],
@@ -119,12 +109,8 @@ const config = {
             title: 'More',
             items: [
               {
-                label: 'Blog',
-                to: '/blog',
-              },
-              {
                 label: 'GitHub',
-                href: 'https://github.com/physical-ai-robotics/textbook',
+                href: 'https://github.com/saad-codin/physical-ai-robotics',
               },
             ],
           },
@@ -136,6 +122,9 @@ const config = {
         darkTheme: themes.dracula,
       },
     }),
+  stylesheets: [
+    'https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@700;800&family=Fira+Code:wght@400;600&display=swap',
+  ],
 };
 
 module.exports = config;

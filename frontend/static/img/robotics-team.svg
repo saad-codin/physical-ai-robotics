@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <!-- Background -->
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:0.1" />
+    </linearGradient>
+
+    <linearGradient id="robot-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e88e5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1565c0;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="person-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff7043;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f4511e;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#bg-gradient)"/>
+
+  <!-- Grid pattern background -->
+  <g opacity="0.1">
+    <line x1="0" y1="100" x2="800" y2="100" stroke="#667eea" stroke-width="1"/>
+    <line x1="0" y1="200" x2="800" y2="200" stroke="#667eea" stroke-width="1"/>
+    <line x1="0" y1="300" x2="800" y2="300" stroke="#667eea" stroke-width="1"/>
+    <line x1="0" y1="400" x2="800" y2="400" stroke="#667eea" stroke-width="1"/>
+    <line x1="100" y1="0" x2="100" y2="500" stroke="#667eea" stroke-width="1"/>
+    <line x1="200" y1="0" x2="200" y2="500" stroke="#667eea" stroke-width="1"/>
+    <line x1="300" y1="0" x2="300" y2="500" stroke="#667eea" stroke-width="1"/>
+    <line x1="400" y1="0" x2="400" y2="500" stroke="#667eea" stroke-width="1"/>
+    <line x1="500" y1="0" x2="500" y2="500" stroke="#667eea" stroke-width="1"/>
+    <line x1="600" y1="0" x2="600" y2="500" stroke="#667eea" stroke-width="1"/>
+    <line x1="700" y1="0" x2="700" y2="500" stroke="#667eea" stroke-width="1"/>
+  </g>
+
+  <!-- Humanoid Robot (Center) -->
+  <g transform="translate(350, 150)">
+    <!-- Robot head -->
+    <rect x="15" y="0" width="70" height="80" rx="10" fill="url(#robot-gradient)"/>
+    <circle cx="35" cy="30" r="8" fill="#fff"/>
+    <circle cx="65" cy="30" r="8" fill="#fff"/>
+    <circle cx="35" cy="30" r="4" fill="#1e88e5"/>
+    <circle cx="65" cy="30" r="4" fill="#1e88e5"/>
+    <rect x="35" y="55" width="30" height="8" rx="4" fill="#fff" opacity="0.5"/>
+
+    <!-- Antenna -->
+    <line x1="50" y1="0" x2="50" y2="-15" stroke="#1e88e5" stroke-width="3"/>
+    <circle cx="50" cy="-15" r="5" fill="#ff7043"/>
+
+    <!-- Robot body -->
+    <rect x="0" y="85" width="100" height="100" rx="15" fill="url(#robot-gradient)"/>
+    <circle cx="50" cy="135" r="15" fill="#fff" opacity="0.3"/>
+    <rect x="20" y="110" width="15" height="25" rx="5" fill="#fff" opacity="0.2"/>
+    <rect x="65" y="110" width="15" height="25" rx="5" fill="#fff" opacity="0.2"/>
+
+    <!-- Robot arms -->
+    <rect x="-15" y="90" width="12" height="70" rx="6" fill="url(#robot-gradient)"/>
+    <rect x="103" y="90" width="12" height="70" rx="6" fill="url(#robot-gradient)"/>
+    <circle cx="-9" cy="165" r="8" fill="#1565c0"/>
+    <circle cx="109" cy="165" r="8" fill="#1565c0"/>
+
+    <!-- Robot legs -->
+    <rect x="20" y="185" width="20" height="75" rx="10" fill="url(#robot-gradient)"/>
+    <rect x="60" y="185" width="20" height="75" rx="10" fill="url(#robot-gradient)"/>
+    <rect x="18" y="260" width="24" height="12" rx="6" fill="#1565c0"/>
+    <rect x="58" y="260" width="24" height="12" rx="6" fill="#1565c0"/>
+  </g>
+
+  <!-- Developer 1 (Left) -->
+  <g transform="translate(120, 200)">
+    <!-- Head -->
+    <circle cx="30" cy="25" r="25" fill="url(#person-gradient)"/>
+    <!-- Body -->
+    <rect x="5" y="50" width="50" height="80" rx="25" fill="url(#person-gradient)"/>
+    <!-- Arms -->
+    <rect x="-10" y="60" width="15" height="50" rx="7" fill="url(#person-gradient)"/>
+    <rect x="55" y="60" width="15" height="50" rx="7" fill="url(#person-gradient)"/>
+    <!-- Legs -->
+    <rect x="12" y="120" width="18" height="60" rx="9" fill="url(#person-gradient)"/>
+    <rect x="35" y="120" width="18" height="60" rx="9" fill="url(#person-gradient)"/>
+
+    <!-- Laptop -->
+    <rect x="-5" y="95" width="70" height="45" rx="5" fill="#333"/>
+    <rect x="0" y="100" width="60" height="35" rx="3" fill="#4fc3f7"/>
+    <line x1="10" y1="110" x2="50" y2="110" stroke="#fff" stroke-width="2" opacity="0.5"/>
+    <line x1="10" y1="120" x2="45" y2="120" stroke="#fff" stroke-width="2" opacity="0.5"/>
+  </g>
+
+  <!-- Developer 2 (Right) -->
+  <g transform="translate(580, 200)">
+    <!-- Head -->
+    <circle cx="30" cy="25" r="25" fill="#4299e1"/>
+    <!-- Body -->
+    <rect x="5" y="50" width="50" height="80" rx="25" fill="#4299e1"/>
+    <!-- Arms -->
+    <rect x="-10" y="60" width="15" height="50" rx="7" fill="#4299e1"/>
+    <rect x="55" y="60" width="15" height="50" rx="7" fill="#4299e1"/>
+    <!-- Legs -->
+    <rect x="12" y="120" width="18" height="60" rx="9" fill="#4299e1"/>
+    <rect x="35" y="120" width="18" height="60" rx="9" fill="#4299e1"/>
+
+    <!-- Tablet -->
+    <rect x="5" y="90" width="50" height="40" rx="5" fill="#333"/>
+    <rect x="8" y="93" width="44" height="34" rx="3" fill="#81c784"/>
+    <circle cx="30" cy="110" r="8" fill="#fff" opacity="0.3"/>
+  </g>
+
+  <!-- Floating code symbols -->
+  <g opacity="0.3">
+    <text x="250" y="80" font-family="monospace" font-size="24" fill="#667eea">&lt;/&gt;</text>
+    <text x="520" y="90" font-family="monospace" font-size="20" fill="#764ba2">{}</text>
+    <text x="180" y="140" font-family="monospace" font-size="18" fill="#1e88e5">AI</text>
+    <text x="610" y="160" font-family="monospace" font-size="18" fill="#ff7043">ROS</text>
+  </g>
+
+  <!-- Connection lines -->
+  <g opacity="0.2">
+    <line x1="190" y1="250" x2="350" y2="300" stroke="#667eea" stroke-width="2" stroke-dasharray="5,5"/>
+    <line x1="580" y1="250" x2="450" y2="300" stroke="#667eea" stroke-width="2" stroke-dasharray="5,5"/>
+  </g>
+
+  <!-- Decorative elements -->
+  <circle cx="100" cy="80" r="5" fill="#ff7043" opacity="0.5">
+    <animate attributeName="r" values="5;8;5" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="700" cy="100" r="5" fill="#1e88e5" opacity="0.5">
+    <animate attributeName="r" values="5;8;5" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="150" cy="450" r="5" fill="#4299e1" opacity="0.5">
+    <animate attributeName="r" values="5;8;5" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="680" cy="420" r="5" fill="#764ba2" opacity="0.5">
+    <animate attributeName="r" values="5;8;5" dur="2.2s" repeatCount="indefinite"/>
+  </circle>
+</svg>
