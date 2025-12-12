@@ -157,15 +157,18 @@ class QdrantService:
             # Ensure collection exists before operation
             self._ensure_collection_exists()
 
-            search_result = self.client.search(
+            search_result = self.client.query_points(
                 collection_name=self.collection_name,
-                query_vector=query_vector,
+                query=query_vector,
                 limit=top_k,
                 score_threshold=score_threshold,
             )
 
             results = []
-            for scored_point in search_result:
+            # query_points returns a QueryResponse with points attribute
+            points = search_result.points if hasattr(search_result, 'points') else search_result
+
+            for scored_point in points:
                 results.append({
                     "embedding_id": scored_point.id,
                     "lesson_id": scored_point.payload.get("lesson_id"),

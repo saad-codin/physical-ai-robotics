@@ -37,9 +37,19 @@ class ChatbotService:
 
         # Process code examples as separate chunks
         for code_example in lesson.code_examples:
-            content_chunks.append(f"Code Example ({code_example.language}): {code_example.code}")
+            # code_examples is a list of dicts, not objects
+            if isinstance(code_example, dict):
+                language = code_example.get('language', 'unknown')
+                code = code_example.get('code', '')
+                content_chunks.append(f"Code Example ({language}): {code}")
+            else:
+                # Handle object case if needed
+                content_chunks.append(f"Code Example ({code_example.language}): {code_example.code}")
 
         indexed_count = 0
+
+        # Create all embeddings first, then batch save to DB
+        from src.models.lesson_embedding import LessonEmbedding
 
         for chunk in content_chunks:
             # Generate embedding for the chunk
@@ -70,15 +80,17 @@ class ChatbotService:
                 ]
             )
 
-            # Create reference in PostgreSQL
-            embedding_data = {
-                "lesson_id": lesson.lesson_id,
-                "passage_text": chunk,
-                "qdrant_vector_id": qdrant_vector_id
-            }
-
-            await create_lesson_embedding(db, embedding_data)
+            # Create reference in PostgreSQL (add to session but don't commit yet)
+            db_embedding = LessonEmbedding(
+                lesson_id=lesson.lesson_id,
+                passage_text=chunk,
+                qdrant_vector_id=qdrant_vector_id
+            )
+            db.add(db_embedding)
             indexed_count += 1
+
+        # Flush to get IDs but don't commit (let caller handle commit)
+        await db.flush()
 
         return indexed_count
 
