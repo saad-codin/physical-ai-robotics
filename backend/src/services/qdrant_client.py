@@ -171,6 +171,7 @@ class QdrantService:
                     "lesson_id": scored_point.payload.get("lesson_id"),
                     "passage_text": scored_point.payload.get("passage_text"),
                     "similarity_score": scored_point.score,
+                    "payload": scored_point.payload,  # Include full payload for compatibility
                     "metadata": {
                         k: v for k, v in scored_point.payload.items()
                         if k not in ["embedding_id", "lesson_id", "passage_text"]
@@ -182,6 +183,41 @@ class QdrantService:
 
         except Exception as e:
             logger.error(f"Error searching similar passages: {e}")
+            return []
+
+    async def search_similar_passages_async(
+        self,
+        query_text: str,
+        top_k: int = 5,
+        similarity_threshold: float = 0.5,
+    ) -> List[Dict[str, Any]]:
+        """Async wrapper to search for similar passages from query text.
+
+        Generates embeddings from the query text and searches for similar passages.
+
+        Args:
+            query_text: The query text to search for
+            top_k: Number of top results to return
+            similarity_threshold: Minimum similarity score threshold
+
+        Returns:
+            List[Dict[str, Any]]: List of similar passages with metadata
+        """
+        try:
+            # Import here to avoid circular dependency
+            from src.utils.embeddings import llm_service
+
+            # Generate embedding for query text
+            query_vector = llm_service.generate_embedding(query_text)
+
+            # Use the synchronous search method
+            return self.search_similar_passages(
+                query_vector=query_vector,
+                top_k=top_k,
+                score_threshold=similarity_threshold,
+            )
+        except Exception as e:
+            logger.error(f"Error in async search: {e}")
             return []
 
     def delete_embeddings_by_lesson(self, lesson_id: UUID) -> bool:

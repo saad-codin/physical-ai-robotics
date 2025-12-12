@@ -87,7 +87,7 @@ async def chatkit_chat(
 
         try:
             # Search for relevant passages in the knowledge base
-            retrieved_passages = await qdrant_service.search_similar_passages(
+            retrieved_passages = await qdrant_service.search_similar_passages_async(
                 query_text=query_text,
                 top_k=5,
                 similarity_threshold=0.5
@@ -95,7 +95,17 @@ async def chatkit_chat(
 
             if retrieved_passages:
                 # Build context from retrieved passages
-                context = "\\n\\n".join([passage.get("payload", {}).get("text", "") for passage in retrieved_passages])
+                # Access passage_text directly from the returned dict
+                context_parts = []
+                for passage in retrieved_passages:
+                    passage_text = passage.get("passage_text", "")
+                    lesson_id = passage.get("lesson_id", "")
+                    similarity_score = passage.get("similarity_score", 0.0)
+                    context_parts.append(
+                        f"[Lesson {lesson_id}] (Relevance: {similarity_score:.2f})\n{passage_text}"
+                    )
+
+                context = "\n\n---\n\n".join(context_parts)
 
                 # Create a RAG-enhanced prompt
                 system_message = f"""You are an AI Robotics Tutor. Use the following context to answer the user's question about robotics concepts. If the answer is not in the context, use your general knowledge but mention that it's not from the provided materials.
