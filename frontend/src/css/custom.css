@@ -771,6 +771,7 @@ th {
   align-items: center;
   gap: 0.75rem;
   margin-left: auto;
+  flex-shrink: 0;
 }
 
 .navbar-auth-user-info {
@@ -781,6 +782,7 @@ th {
   background-color: var(--ifm-color-primary-lightest);
   border-radius: 6px;
   border: 1px solid var(--ifm-color-primary-lighter);
+  flex-shrink: 0;
 }
 
 .navbar-auth-email {
@@ -790,7 +792,7 @@ th {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 150px;
+  max-width: 180px;
 }
 
 .navbar-auth-logout-btn {
@@ -804,6 +806,7 @@ th {
   font-weight: 500;
   transition: background-color 0.2s;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .navbar-auth-link {
@@ -814,6 +817,7 @@ th {
   font-weight: 500;
   transition: color 0.2s;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .navbar-auth-link:hover {
@@ -831,6 +835,7 @@ th {
   font-weight: 500;
   transition: background-color 0.2s;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .navbar-auth-signup-btn:hover {
@@ -839,10 +844,31 @@ th {
   text-decoration: none;
 }
 
+[data-theme='dark'] .navbar-auth-user-info {
+  background-color: var(--ifm-color-primary-darkest);
+  border-color: var(--ifm-color-primary-dark);
+}
+
+[data-theme='dark'] .navbar-auth-email {
+  color: var(--ifm-color-primary-lightest);
+}
+
 /* Responsive Design Improvements */
+@media (max-width: 1200px) {
+  .navbar-auth-email {
+    max-width: 140px;
+  }
+}
+
 @media (max-width: 996px) {
-  /* Mobile menu fixes */
+  /* Hide auth items on mobile - they interfere with hamburger */
+  .navbar .custom-navbar-auth-items {
+    display: none;
+  }
+
+  /* Show auth items in mobile sidebar menu */
   .navbar-sidebar .custom-navbar-auth-items {
+    display: flex !important;
     flex-direction: column;
     width: 100%;
     padding: 1rem;
@@ -869,6 +895,11 @@ th {
     display: block;
     padding: 0.75rem 1rem;
   }
+
+  /* Ensure proper spacing */
+  .navbar__items {
+    gap: 0.5rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -878,11 +909,13 @@ th {
 
   .robotics-header p {
     font-size: 1.2rem;
+    padding: 0 1rem;
   }
 
   .hero-buttons {
     flex-direction: column;
     align-items: center;
+    padding: 0 1rem;
   }
 
   .button--primary.hero-button,
@@ -901,10 +934,6 @@ th {
 
   .stat-number {
     font-size: 2.5rem;
-  }
-
-  .navbar-auth-email {
-    max-width: 120px;
   }
 }
 
@@ -1138,25 +1167,37 @@ th {
   }
 }
 
-/* Responsive Design */
+/* Responsive Design for Hero Section */
 @media (max-width: 996px) {
   .hero-container {
     grid-template-columns: 1fr !important;
     text-align: center;
-    padding: 3rem 1rem !important;
+    padding: 2rem 1.5rem !important;
     gap: 2rem;
+    min-height: 85vh;
   }
 
   .hero-content {
     text-align: center;
+    max-width: 100%;
+  }
+
+  .hero-robot {
+    order: -1;
   }
 
   .futuristic-title {
-    font-size: 3rem !important;
+    font-size: 2.75rem !important;
   }
 
   .futuristic-subtitle {
-    font-size: 1.2rem !important;
+    font-size: 1.15rem !important;
+    padding: 0 1rem;
+  }
+
+  .futuristic-button {
+    padding: 0.9rem 2rem !important;
+    font-size: 1rem !important;
   }
 
   /* Feature cards responsive */
@@ -1166,15 +1207,22 @@ th {
 
   /* Stats grid responsive */
   .stats-grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 1.5rem;
+    padding: 0 1rem;
+  }
+
+  /* CTA responsive */
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
   }
 }
 
 @media (max-width: 768px) {
   .futuristic-hero {
-    min-height: 100vh;
-    padding: 1rem !important;
+    min-height: auto;
+    padding: 0 !important;
   }
 
   .hero-container {
@@ -1184,7 +1232,7 @@ th {
   }
 
   .futuristic-title {
-    font-size: 2rem !important;
+    font-size: 2.25rem !important;
     line-height: 1.2 !important;
     margin-bottom: 1rem !important;
   }
@@ -1193,33 +1241,40 @@ th {
     font-size: 1rem !important;
     line-height: 1.5 !important;
     margin-bottom: 1.5rem !important;
+    padding: 0;
   }
 
   .futuristic-button {
     padding: 0.875rem 1.75rem !important;
     font-size: 1rem !important;
     width: 100%;
-    max-width: 280px;
+    max-width: 300px;
+  }
+
+  .hero-buttons {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
   }
 
   /* Feature cards mobile */
   .feature-card {
-    padding: 1.5rem;
+    padding: 1.75rem;
   }
 
   .feature-icon {
-    width: 70px;
-    height: 70px;
-    margin: 0 auto 1rem;
+    width: 75px;
+    height: 75px;
+    margin: 0 auto 1.25rem;
   }
 
   .feature-title {
-    font-size: 1.3rem;
+    font-size: 1.35rem;
   }
 
   /* Stats section mobile */
   .stats-section {
-    padding: 3rem 0;
+    padding: 3rem 1rem;
   }
 
   .stat-card {
@@ -1227,34 +1282,37 @@ th {
   }
 
   .stat-number {
-    font-size: 2.5rem;
+    font-size: 2.75rem;
   }
 
   /* CTA section mobile */
   .cta-section {
-    padding: 4rem 1rem;
+    padding: 3.5rem 1.5rem;
   }
 
   .cta-title {
-    font-size: 1.75rem;
+    font-size: 1.85rem;
   }
 
   .cta-description {
-    font-size: 1rem;
+    font-size: 1.05rem;
   }
 
   .cta-button {
     width: 100%;
-    max-width: 280px;
+    max-width: 300px;
   }
 
   /* Table responsive */
   table {
     font-size: 0.875rem;
+    display: block;
+    overflow-x: auto;
   }
 
   th, td {
     padding: 0.5rem;
+    min-width: 100px;
   }
 
   /* Robotics cards mobile */
@@ -1262,36 +1320,59 @@ th {
     padding: 1.5rem;
     margin: 0.75rem 0;
   }
+
+  /* Features section padding */
+  .features-section {
+    padding: 4rem 1rem;
+  }
 }
 
 @media (max-width: 480px) {
+  .futuristic-hero {
+    min-height: auto;
+  }
+
+  .hero-container {
+    padding: 1.5rem 1rem !important;
+    gap: 1rem;
+  }
+
   .futuristic-title {
-    font-size: 1.75rem !important;
+    font-size: 1.85rem !important;
   }
 
   .futuristic-subtitle {
-    font-size: 0.9rem !important;
+    font-size: 0.95rem !important;
   }
 
   .futuristic-button {
     padding: 0.75rem 1.5rem !important;
-    font-size: 0.9rem !important;
+    font-size: 0.95rem !important;
+    max-width: 100%;
   }
 
   .section-title {
     font-size: 1.75rem;
+    padding: 0 0.5rem;
   }
 
   .section-subtitle {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    padding: 0 0.5rem;
   }
 
   .stat-number {
-    font-size: 2rem;
+    font-size: 2.25rem;
   }
 
   .stat-label {
-    font-size: 0.875rem;
+    font-size: 0.85rem;
+  }
+
+  /* Stats grid mobile */
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
   }
 
   /* Ensure proper padding on small screens */
@@ -1302,11 +1383,42 @@ th {
 
   /* Navbar title responsive */
   .navbar__title {
-    font-size: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .navbar__logo {
+    height: 1.75rem;
   }
 
   /* Hero buttons stack properly */
   .hero-buttons {
     width: 100%;
+  }
+
+  /* Feature cards extra small */
+  .feature-card {
+    padding: 1.5rem 1rem;
+  }
+
+  .feature-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .feature-title {
+    font-size: 1.2rem;
+  }
+
+  .feature-description {
+    font-size: 0.9rem;
+  }
+
+  /* CTA extra small */
+  .cta-title {
+    font-size: 1.5rem;
+  }
+
+  .cta-description {
+    font-size: 0.95rem;
   }
 }
