@@ -81,7 +81,7 @@ async def main():
         results = await qdrant.search_similar_passages_async(
             query_text=query_text,
             top_k=3,
-            similarity_threshold=0.3
+            similarity_threshold=0.25  # Optimized threshold
         )
 
         print(f"    Query: '{query_text}'")

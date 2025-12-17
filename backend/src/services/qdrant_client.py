@@ -141,7 +141,7 @@ class QdrantService:
         self,
         query_vector: List[float],
         top_k: int = 5,
-        score_threshold: float = 0.7,
+        score_threshold: float = 0.25,  # Optimized based on empirical analysis
     ) -> List[Dict[str, Any]]:
         """Search for similar passages using vector similarity.
 
@@ -192,7 +192,7 @@ class QdrantService:
         self,
         query_text: str,
         top_k: int = 5,
-        similarity_threshold: float = 0.5,
+        similarity_threshold: float = 0.25,  # Optimized based on empirical analysis
     ) -> List[Dict[str, Any]]:
         """Async wrapper to search for similar passages from query text.
 
