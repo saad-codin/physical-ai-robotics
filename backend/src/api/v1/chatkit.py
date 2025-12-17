@@ -85,43 +85,87 @@ async def chatkit_chat(
         # First, try to retrieve relevant passages from Qdrant
         qdrant_service = get_qdrant_service()
 
+        # Get book-level context info
+        book_title = "Physical AI & Humanoid Robotics Textbook"
+        book_description = "This textbook covers AI-native learning for robotics and AI, including topics like AI-Robot Brain architecture, perception systems, planning, VLA models, digital twins, ROS2, and humanoid robotics."
+
         try:
             # Search for relevant passages in the knowledge base
+            # Lower threshold to 0.35 to catch more results for general queries
             retrieved_passages = await qdrant_service.search_similar_passages_async(
                 query_text=query_text,
                 top_k=5,
-                similarity_threshold=0.5
+                similarity_threshold=0.35
             )
 
             if retrieved_passages:
                 # Build context from retrieved passages
                 # Access passage_text directly from the returned dict
                 context_parts = []
+                lesson_titles = set()
+
                 for passage in retrieved_passages:
                     passage_text = passage.get("passage_text", "")
                     lesson_id = passage.get("lesson_id", "")
                     similarity_score = passage.get("similarity_score", 0.0)
+                    metadata = passage.get("metadata", {})
+                    lesson_title = metadata.get("title", "Unknown")
+
+                    lesson_titles.add(lesson_title)
+
                     context_parts.append(
-                        f"[Lesson {lesson_id}] (Relevance: {similarity_score:.2f})\n{passage_text}"
+                        f"[From '{lesson_title}' lesson] (Relevance: {similarity_score:.2f})\n{passage_text}"
                     )
 
                 context = "\n\n---\n\n".join(context_parts)
 
-                # Create a RAG-enhanced prompt
-                system_message = f"""You are an AI Robotics Tutor. Use the following context to answer the user's question about robotics concepts. If the answer is not in the context, use your general knowledge but mention that it's not from the provided materials.
+                # Create a RAG-enhanced prompt with book context
+                system_message = f"""You are an AI Robotics Tutor helping students learn from the "{book_title}".
 
-Context:
+**About this textbook:** {book_description}
+
+When users ask about "the book", "this textbook", or general questions about topics, they're referring to this Physical AI & Humanoid Robotics textbook.
+
+**Relevant content from the textbook:**
+
 {context}
 
-Be helpful, educational, and accurate in your responses about robotics, AI, and related topics."""
+**Instructions:**
+- Use the provided textbook content above to answer the user's question
+- If asked about "the book" or "what topics are covered", describe the content based on the passages shown
+- If the answer isn't fully in the context, supplement with your knowledge but indicate what's from the textbook vs. general knowledge
+- Be helpful, educational, and accurate in your responses about robotics, AI, and related topics
+- Reference specific lessons when helpful (e.g., "In the Planning lesson...")"""
             else:
-                # No relevant passages found, use general robotics knowledge
-                system_message = "You are an AI Robotics Tutor. Answer the user's question about robotics concepts, programming, or theory to the best of your knowledge. Be helpful, educational, and accurate."
+                # No relevant passages found, but still provide book context
+                system_message = f"""You are an AI Robotics Tutor helping students learn from the "{book_title}".
+
+**About this textbook:** {book_description}
+
+I couldn't find specific passages from the textbook for your query, but I can answer based on general robotics and AI knowledge.
+
+Note: The textbook covers topics including:
+- AI-Robot Brain architecture and cognitive systems
+- Perception systems (vision, sensors, sensor fusion)
+- Planning and decision-making systems
+- Vision-Language-Action (VLA) models
+- Digital twins and simulation
+- ROS2 (Robot Operating System 2)
+- Humanoid robotics
+- Safety and validation
+
+How can I help you with your question?"""
 
         except Exception as qdrant_error:
             logger.warning(f"Qdrant search failed: {qdrant_error}, proceeding with general knowledge")
-            # If Qdrant is unavailable, proceed with general knowledge
-            system_message = "You are an AI Robotics Tutor. Answer the user's question about robotics concepts, programming, or theory to the best of your knowledge. Be helpful, educational, and accurate."
+            # If Qdrant is unavailable, still provide book context
+            system_message = f"""You are an AI Robotics Tutor helping students learn from the "{book_title}".
+
+**About this textbook:** {book_description}
+
+Note: I'm currently unable to access the textbook content database, but I can answer your robotics and AI questions using general knowledge. The textbook typically covers AI-Robot Brain, perception, planning, VLA models, digital twins, ROS2, and humanoid robotics.
+
+How can I help you?"""
 
         # Call OpenAI API with the prepared context
         response = await client.chat.completions.create(
